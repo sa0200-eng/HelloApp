@@ -1,8 +1,25 @@
 public class HelloApp {
     public static void main(String[] args) {
 
-        String name = (args.length > 0) ? args[0] : "World";
-        System.out.println("Hello, " + name + "!");
+        String result;
 
+        if (args.length == 0) {
+            result = "World";
+        } else {
+            StringBuilder nameBuilder = new StringBuilder();
+
+            for (String name : args) {
+                nameBuilder.append(name).append(", ");
+            }
+
+            // Remove trailing ", "
+            if (nameBuilder.length() > 0) {
+                result = nameBuilder.substring(0, nameBuilder.length() - 2);
+            } else {
+                result = "World";
+            }
+        }
+
+        System.out.println("Hello, " + result + "!");
     }
 }
